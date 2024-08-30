@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Romantis Ulang Tahun</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #2f4f4f,#2f4f4f);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        #message {
+            font-size: 2.5em;
+            line-height: 1.5em;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #heartsContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart {
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            background-color: #f0fff0;
+            transform: rotate(-45deg);
+            animation: floatUp 7s infinite;
+            opacity: 0.7;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            background-color: #f0fff0;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -7.5px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 7.5px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(-45deg);
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        #backButton {
+            background-color: #2f4f4f;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 30px;
+            width: auto;
+            
+            
+        }
+
+        #backButton:hover {
+            background-color: #f0fff0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message">
+        Selamat Ulang Tahun Sayang!<br>panjang umur,<br>sehat selalu,<br>dilancarkan rezekinya,<br>semangat trus kerjanya.<br>
+        <br>
+        Love you forever!
+    </div>
+
+    <button id="backButton" onclick="window.history.back()"><a href="awal1.html">home</a></button>
+
+    <div id="heartsContainer"></div>
+
+    <script>
+        // Fungsi untuk membuat elemen partikel hati
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 5 + 's'; // Random duration between 5-7s
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            // Hapus hati setelah animasi selesai
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        // Buat hati setiap 300ms
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
